@@ -20,17 +20,13 @@ def read_sentiment_examples(infile: str) -> List[SentimentExample]:
     """
     # TODO: Open the file, go line by line, separate sentence and label, tokenize the sentence and create SentimentExample object
     examples: List[SentimentExample] = []
-    with open(infile) as f:
+    with open(infile, "r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
-            print(line)
             parts = line.rsplit("\t",1)
             sentence,target = parts
             label = int(target)
-            print(label)
-            print(sentence)
             clear_words = tokenize(sentence)
-            print(clear_words)
             sentiment_ex = SentimentExample(clear_words,label)
             examples.append(sentiment_ex)
     return examples
@@ -81,7 +77,7 @@ def bag_of_words(
     for word in text:
         if word in vocab.keys():
             idx = vocab[word]
-            print(bow)
+            #print(bow)
             if binary:
                 bow[idx] = 1
             else: 

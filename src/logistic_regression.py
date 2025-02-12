@@ -46,7 +46,7 @@ class LogisticRegression:
             #d)update weights
             self.weights -= learning_rate*gradient
             # 3.
-            if i % 50 == 0:
+            if i % 20 == 0:
                 print(f"Epoch {i}: Loss = {loss.item()}")
         return
 
@@ -101,7 +101,7 @@ class LogisticRegression:
             torch.Tensor: Initialized weights as a tensor with size (dim + 1,).
         """
         torch.manual_seed(random_state)
-        params: torch.Tensor = torch.randn(dim +1)
+        params: torch.Tensor = torch.randn(dim +1)*0.0001 #para reducir la distribución de la normal y que no den logs de numeros grandes
         
         return params
 
